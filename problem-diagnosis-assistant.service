@@ -1,0 +1,15 @@
+[Unit]
+Description=Problem Diagnosis Assistant Backend
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/problem-diagnosis-assistant/backend
+Environment="PATH=/opt/problem-diagnosis-assistant/venv/bin"
+ExecStart=/opt/problem-diagnosis-assistant/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
